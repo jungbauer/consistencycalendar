@@ -78,6 +78,14 @@ function drawMonth(selector, monthDate, checkins) {
     rect.filter(function(d) { return d in lookup; })
         .style("fill", '#111111')
         .classed("clickable", true)
+        .on("click", function(d){
+            if(d3.select(this).classed('focus')){
+                d3.select(this).classed('focus', false);
+            } else {
+                d3.select(this).classed('focus', true)
+            }
+            // doSomething();
+        })
         .select("title")
         .text(function(d) { return titleFormat(new Date(d)) + ":  " + lookup[d]; });
 }
