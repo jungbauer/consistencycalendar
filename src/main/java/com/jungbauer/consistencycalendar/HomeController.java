@@ -1,5 +1,8 @@
 package com.jungbauer.consistencycalendar;
 
+import com.jungbauer.consistencycalendar.pojo.Test;
+import com.jungbauer.consistencycalendar.service.TestService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -9,6 +12,13 @@ import java.util.Map;
 
 @Controller
 public class HomeController {
+
+    private final TestService testService;
+
+    @Autowired
+    public HomeController(TestService testService) {
+        this.testService = testService;
+    }
 
     @GetMapping("/")
     public ModelAndView index() {
@@ -22,6 +32,9 @@ public class HomeController {
         Map<String, Object> model = new LinkedHashMap<>();
         String title = "DISPLAY";
         model.put("title", title);
+
+        Test test = testService.readTestJson();
+        model.put("test",test);
 
         return new ModelAndView("display", model);
     }
