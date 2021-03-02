@@ -1,13 +1,14 @@
 package com.jungbauer.consistencycalendar.pojo;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Test {
     public String type;
     public String title;
-    public String startDate;
-    public String endDate;
+    public LocalDate startDate;
+    public LocalDate endDate;
     public String note;
     public List<String> yesList;
 
