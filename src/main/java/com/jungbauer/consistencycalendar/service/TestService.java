@@ -1,6 +1,7 @@
 package com.jungbauer.consistencycalendar.service;
 
 import com.google.gson.*;
+import com.jungbauer.consistencycalendar.object.Month;
 import com.jungbauer.consistencycalendar.object.Test;
 import com.jungbauer.consistencycalendar.object.TestDisplay;
 import org.springframework.stereotype.Service;
@@ -11,7 +12,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
+import java.util.stream.Collectors;
 
 @Service
 public class TestService {
@@ -46,6 +50,12 @@ public class TestService {
         newObj.startDate = obj.startDate;
         newObj.endDate = obj.endDate;
 
+        for (String checkin : obj.yesList) {
+            LocalDate checkinDate = LocalDate.parse(checkin);
+            newObj.addCheckin(checkinDate);
+        }
+
+        System.out.println(newObj.months);
         return newObj;
     }
 }

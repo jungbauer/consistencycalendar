@@ -24,6 +24,10 @@ class TestServiceSpec extends Specification {
         baseTest = new Test()
         baseTest.startDate = startDate
         baseTest.endDate = endDate
+        baseTest.yesList = List.of("2021-02-04","2021-02-05","2021-02-07",
+                "2021-02-09","2021-02-10","2021-02-14",
+                "2021-02-16","2021-02-18","2021-02-19",
+                "2021-02-22","2021-03-01")
     }
 
     def "Test to TestDisplay conversion"() {
@@ -32,5 +36,6 @@ class TestServiceSpec extends Specification {
         expect:
         td.startDate.isEqual(startDate)
         td.endDate.isEqual(endDate)
+        td.months.size() == 2
     }
 }
