@@ -1,4 +1,4 @@
-package com.jungbauer.consistencycalendar.pojo;
+package com.jungbauer.consistencycalendar.object;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

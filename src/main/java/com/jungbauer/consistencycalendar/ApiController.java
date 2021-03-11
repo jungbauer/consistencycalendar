@@ -1,6 +1,6 @@
 package com.jungbauer.consistencycalendar;
 
-import com.jungbauer.consistencycalendar.pojo.Test;
+import com.jungbauer.consistencycalendar.object.Test;
 import com.jungbauer.consistencycalendar.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

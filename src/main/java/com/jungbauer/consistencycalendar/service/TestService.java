@@ -1,7 +1,7 @@
 package com.jungbauer.consistencycalendar.service;
 
 import com.google.gson.*;
-import com.jungbauer.consistencycalendar.pojo.Test;
+import com.jungbauer.consistencycalendar.object.Test;
 import org.springframework.stereotype.Service;
 
 import java.io.Reader;
