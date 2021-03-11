@@ -13,6 +13,7 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
@@ -55,7 +56,7 @@ public class TestService {
             newObj.addCheckin(checkinDate);
         }
 
-        System.out.println(newObj.months);
+        newObj.months.sort(Comparator.comparing(Month::getFirstDay));
         return newObj;
     }
 }

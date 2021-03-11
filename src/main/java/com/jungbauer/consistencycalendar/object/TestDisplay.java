@@ -16,7 +16,9 @@ public class TestDisplay {
     public void addCheckin(LocalDate checkin) {
         // if months list empty add from first checkin
         if (months.isEmpty()) {
-            months.add(new Month(checkin));
+            Month newMonth = new Month(checkin);
+            newMonth.checkins.add(checkin.toString());
+            months.add(newMonth);
         }
         else {
             int pos = findMonth(checkin);

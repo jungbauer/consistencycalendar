@@ -17,6 +17,10 @@ public class Month {
         firstDay = LocalDate.of(date.getYear(), date.getMonth(), 1);
     }
 
+    public LocalDate getFirstDay() {
+        return firstDay;
+    }
+
     @Override
     public String toString() {
         return "Month{" +
