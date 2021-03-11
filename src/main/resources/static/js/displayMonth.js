@@ -1,4 +1,5 @@
 function drawMonth(selector, monthDate, checkins) {
+    // minmax shouldn't be needed if I'm only feeding the function a single month.
     var minDate = new Date(monthDate);
     var maxDate = new Date(monthDate);
 
