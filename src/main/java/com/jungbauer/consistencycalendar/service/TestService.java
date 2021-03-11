@@ -2,6 +2,7 @@ package com.jungbauer.consistencycalendar.service;
 
 import com.google.gson.*;
 import com.jungbauer.consistencycalendar.object.Test;
+import com.jungbauer.consistencycalendar.object.TestDisplay;
 import org.springframework.stereotype.Service;
 
 import java.io.Reader;
@@ -37,6 +38,15 @@ public class TestService {
         }
 
         return test;
+    }
+
+    public TestDisplay testToTestDisplay(Test obj) {
+        TestDisplay newObj = new TestDisplay();
+
+        newObj.startDate = obj.startDate;
+        newObj.endDate = obj.endDate;
+
+        return newObj;
     }
 }
 
