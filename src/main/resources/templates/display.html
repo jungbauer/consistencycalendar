@@ -17,6 +17,13 @@
 <div id="calendar2"></div>
 <div id="calendar3"></div>
 
+<hr>
+<div id="calendar4"></div>
+
+<hr>
+<div th:each="month, iStat : ${display.months}" th:id="'calendarT' + ${iStat.index}">
+</div>
+
 <script src="/js/d3.v4.js"></script>
 <script src="/js/d3-scale-chromatic.v1.js"></script>
 <script src="/js/displayMonth.js"></script>
@@ -34,5 +41,20 @@
     drawMonth("#calendar2", item.months[1].month, item.months[1].checkins);
     drawMonth("#calendar3", item.months[2].month, item.months[2].checkins);
 </script>
+
+<script th:inline="javascript">
+    let display = [[${display}]];
+    console.log('display', display);
+    drawMonth("#calendar4", display.months[0].firstDay, display.months[0].checkins);
+</script>
+
+<script th:inline="javascript">
+    let display2 = [[${display}]];
+    display2.months.forEach(function (value, i) {
+        let id = "#calendarT" + i;
+        drawMonth(id, value.firstDay, value.checkins);
+    });
+</script>
+
 </body>
 </html>

@@ -35,6 +35,7 @@ public class HomeController {
 
         Test test = testService.readTestJson();
         model.put("test",test);
+        model.put("display", testService.testToTestDisplay(test));
 
         return new ModelAndView("display", model);
     }
