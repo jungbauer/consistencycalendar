@@ -20,8 +20,8 @@ public class Habit {
 
     private String type;
     private String title;
-    private LocalDate start_date;
-    private LocalDate end_date;
+    private LocalDate startDate;
+    private LocalDate endDate;
     private String note;
 
     @OneToMany(mappedBy = "habit")
@@ -41,12 +41,12 @@ public class Habit {
         return title;
     }
 
-    public LocalDate getStart_date() {
-        return start_date;
+    public LocalDate getStartDate() {
+        return startDate;
     }
 
-    public LocalDate getEnd_date() {
-        return end_date;
+    public LocalDate getEndDate() {
+        return endDate;
     }
 
     public String getNote() {
@@ -65,12 +65,12 @@ public class Habit {
         this.title = title;
     }
 
-    public void setStart_date(LocalDate start_date) {
-        this.start_date = start_date;
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
     }
 
-    public void setEnd_date(LocalDate end_date) {
-        this.end_date = end_date;
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
     }
 
     public void setNote(String note) {

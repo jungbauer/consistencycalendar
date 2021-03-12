@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"
+      layout:decorate="~{layout}"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Habits</title>
+</head>
+<body>
+<h1>Habit display</h1>
+
+<div th:each="habit, iStat : ${habits}">
+    <div th:text="${habit.getTitle()}">title</div>
+    <div th:text="'Starting ' + ${habit.getStartDate()} + ' -- ending ' + ${habit.getEndDate()}">period</div>
+    <div th:text="${habit.getNote()}">main note</div>
+    <div><span th:each="completion : ${habit.getCompletions()}" th:text="${completion.getDate()}"></span></div>
+</div>
+
+</body>
+</html>

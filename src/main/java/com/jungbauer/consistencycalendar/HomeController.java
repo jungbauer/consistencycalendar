@@ -16,12 +16,15 @@ public class HomeController {
 
     private final TestService testService;
     private final UserRepository userRepository;
+    private final HabitRepository habitRepository;
 
     @Autowired
-    public HomeController(TestService testService, UserRepository userRepository) {
+    public HomeController(TestService testService, UserRepository userRepository,
+                          HabitRepository habitRepository) {
 
         this.testService = testService;
         this.userRepository = userRepository;
+        this.habitRepository = habitRepository;
     }
 
     @GetMapping("/")
@@ -52,5 +55,15 @@ public class HomeController {
         model.put("users", users);
 
         return new ModelAndView("users", model);
+    }
+
+    @GetMapping("/habits")
+    public ModelAndView habits() {
+        Map<String, Object> model = new LinkedHashMap<>();
+
+        List<Habit> habits = habitRepository.findAll();
+        model.put("habits", habits);
+
+        return new ModelAndView("habits", model);
     }
 }
