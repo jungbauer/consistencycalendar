@@ -1,4 +1,4 @@
-package com.jungbauer.consistencycalendar;
+package com.jungbauer.consistencycalendar.database;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

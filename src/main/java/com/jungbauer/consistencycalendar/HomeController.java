@@ -1,5 +1,7 @@
 package com.jungbauer.consistencycalendar;
 
+import com.jungbauer.consistencycalendar.database.Habit;
+import com.jungbauer.consistencycalendar.database.HabitRepository;
 import com.jungbauer.consistencycalendar.database.User;
 import com.jungbauer.consistencycalendar.database.UserRepository;
 import com.jungbauer.consistencycalendar.object.Test;
