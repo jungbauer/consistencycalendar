@@ -8,7 +8,6 @@ CREATE TABLE users
     birth_date   DATE
 );
 
--- really don't like that ARRAYs are not typed in H2
 CREATE TABLE habit
 (
     id  INT AUTO_INCREMENT PRIMARY KEY,
@@ -16,6 +15,13 @@ CREATE TABLE habit
     title   TEXT,
     start_date  DATE,
     end_date    DATE,
-    note    TEXT,
-    completions ARRAY
+    note    TEXT
+);
+
+CREATE TABLE completions
+(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    date DATE,
+    habit_id int,
+    FOREIGN KEY (habit_id) REFERENCES habit(id)
 );
