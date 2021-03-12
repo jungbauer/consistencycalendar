@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Month {
     public LocalDate firstDay;
-    public List<String> checkins; //todo this should be a List<LocalDate>
+    public List<LocalDate> checkins;
 
     public Month() {
         checkins = new ArrayList<>();

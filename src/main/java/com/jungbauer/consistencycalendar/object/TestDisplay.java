@@ -17,7 +17,7 @@ public class TestDisplay {
         // if months list empty add from first checkin
         if (months.isEmpty()) {
             Month newMonth = new Month(checkin);
-            newMonth.checkins.add(checkin.toString());
+            newMonth.checkins.add(checkin);
             months.add(newMonth);
         }
         else {
@@ -25,12 +25,12 @@ public class TestDisplay {
             // if doesn't contain month add directly
             if (pos == -1) {
                 Month newMonth = new Month(checkin);
-                newMonth.checkins.add(checkin.toString());
+                newMonth.checkins.add(checkin);
                 months.add(newMonth);
             }
             else {
                 // add checkin to the correct month
-                months.get(pos).checkins.add(checkin.toString()); //todo Month should really store dates, not strings
+                months.get(pos).checkins.add(checkin);
             }
         }
     }
