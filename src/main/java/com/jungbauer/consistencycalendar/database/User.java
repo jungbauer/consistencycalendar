@@ -1,4 +1,4 @@
-package com.jungbauer.consistencycalendar;
+package com.jungbauer.consistencycalendar.database;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +9,7 @@ import java.time.LocalDate;
 
 @Table(name = "users")
 @Entity
-class User {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

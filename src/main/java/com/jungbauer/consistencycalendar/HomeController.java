@@ -1,5 +1,7 @@
 package com.jungbauer.consistencycalendar;
 
+import com.jungbauer.consistencycalendar.database.User;
+import com.jungbauer.consistencycalendar.database.UserRepository;
 import com.jungbauer.consistencycalendar.object.Test;
 import com.jungbauer.consistencycalendar.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
