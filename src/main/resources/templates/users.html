@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"
+      layout:decorate="~{layout}"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>USERS</title>
+</head>
+<body>
+Trying to display users here.
+
+<div>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Active</th>
+            <th>Birth Date</th>
+        </tr>
+        <tr th:each="user, iStat : ${users}">
+            <td th:text="${user.getId()}">ID</td>
+            <td th:text="${user.getName()}">Name</td>
+            <td th:text="${user.getAge()}">Age</td>
+            <td th:text="${user.getActive()}">Active</td>
+            <td th:text="${user.getBirthDate()}">Birth Date</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

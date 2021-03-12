@@ -8,16 +8,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
 public class HomeController {
 
     private final TestService testService;
+    private final UserRepository userRepository;
 
     @Autowired
-    public HomeController(TestService testService) {
+    public HomeController(TestService testService, UserRepository userRepository) {
+
         this.testService = testService;
+        this.userRepository = userRepository;
     }
 
     @GetMapping("/")
@@ -38,5 +42,15 @@ public class HomeController {
         model.put("display", testService.testToTestDisplay(test));
 
         return new ModelAndView("display", model);
+    }
+
+    @GetMapping("/users")
+    public ModelAndView users() {
+        Map<String, Object> model = new LinkedHashMap<>();
+
+        List<User> users = userRepository.findAll();
+        model.put("users", users);
+
+        return new ModelAndView("users", model);
     }
 }
