@@ -14,6 +14,7 @@ public class Month {
 
     public Month(LocalDate date) {
         checkins = new ArrayList<>();
+        checkins.add(date);
         firstDay = LocalDate.of(date.getYear(), date.getMonth(), 1);
     }
 

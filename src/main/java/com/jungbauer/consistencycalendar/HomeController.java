@@ -4,12 +4,16 @@ import com.jungbauer.consistencycalendar.database.Habit;
 import com.jungbauer.consistencycalendar.database.HabitRepository;
 import com.jungbauer.consistencycalendar.database.User;
 import com.jungbauer.consistencycalendar.database.UserRepository;
+import com.jungbauer.consistencycalendar.object.HabitDisplay;
 import com.jungbauer.consistencycalendar.object.Test;
+import com.jungbauer.consistencycalendar.service.DisplayService;
 import com.jungbauer.consistencycalendar.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -21,14 +25,16 @@ public class HomeController {
     private final TestService testService;
     private final UserRepository userRepository;
     private final HabitRepository habitRepository;
+    private final DisplayService displayService;
 
     @Autowired
     public HomeController(TestService testService, UserRepository userRepository,
-                          HabitRepository habitRepository) {
+                          HabitRepository habitRepository, DisplayService displayService) {
 
         this.testService = testService;
         this.userRepository = userRepository;
         this.habitRepository = habitRepository;
+        this.displayService = displayService;
     }
 
     @GetMapping("/")
@@ -66,7 +72,13 @@ public class HomeController {
         Map<String, Object> model = new LinkedHashMap<>();
 
         List<Habit> habits = habitRepository.findAll();
-        model.put("habits", habits);
+        List<HabitDisplay> habitDisplays = new ArrayList<>();
+
+        for (Habit habit : habits) {
+            habitDisplays.add(displayService.createHabitDisplay(habit));
+        }
+
+        model.put("habits", habitDisplays);
 
         return new ModelAndView("habits", model);
     }

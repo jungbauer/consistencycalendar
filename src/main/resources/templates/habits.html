@@ -11,10 +11,10 @@
 <h1>Habit display</h1>
 
 <div th:each="habit, iStat : ${habits}">
-    <div th:text="${habit.getTitle()}">title</div>
-    <div th:text="'Starting ' + ${habit.getStartDate()} + ' -- ending ' + ${habit.getEndDate()}">period</div>
-    <div th:text="${habit.getNote()}">main note</div>
-    <div><span th:each="completion : ${habit.getCompletions()}" th:text="${completion.getDate()}"></span></div>
+    <div th:text="${habit.title}">title</div>
+    <div th:text="'Starting ' + ${habit.startDate} + ' -- ending ' + ${habit.endDate}">period</div>
+    <div th:text="${habit.note}">main note</div>
+    <div th:each="month : ${habit.months}" th:text="${month.firstDay.getMonth().toString()}"></div>
 </div>
 
 </body>
