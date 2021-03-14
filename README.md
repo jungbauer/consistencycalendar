@@ -18,3 +18,4 @@ Also exploring JPA. It's more abstracted & automated than I'm accustomed to. Pre
 ### Ideas / ToDo
 - User profiles
 - Spring Security
+- ngrok - so I can hit this from my phone without other server.
