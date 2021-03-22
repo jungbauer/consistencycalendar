@@ -76,4 +76,12 @@ public class Habit {
     public void setNote(String note) {
         this.note = note;
     }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setCompletions(List<Completion> completions) {
+        this.completions = completions;
+    }
 }
