@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Controller
 public class HomeController {
@@ -81,5 +82,22 @@ public class HomeController {
         model.put("habits", habitDisplays);
 
         return new ModelAndView("habits", model);
+    }
+
+    @GetMapping("/habit")
+    public ModelAndView habit(Integer habitId) {
+        Map<String, Object> model = new LinkedHashMap<>();
+        Optional<Habit> habit = habitRepository.findById(habitId);
+
+        if (habit.isPresent()) {
+            model.put("habit", displayService.createHabitDisplay(habit.get()));
+            return new ModelAndView("habit", model);
+        }
+        else {
+            Map<String,String> errMap = new HashMap<>();
+            errMap.put("status", "404");
+            errMap.put("error", "ERROR: Can't find what you're looking for.");
+            return new ModelAndView("error", errMap);
+        }
     }
 }

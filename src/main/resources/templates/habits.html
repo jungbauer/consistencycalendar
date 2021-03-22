@@ -12,26 +12,8 @@
 
 <div th:each="habit, iStat : ${habits}">
     <div th:text="${habit.title}">title</div>
-    <div th:text="'Starting ' + ${habit.startDate} + ' -- ending ' + ${habit.endDate}">period</div>
-    <div th:text="${habit.note}">main note</div>
-
-    <div th:each="month, mStat : ${habit.months}"
-         th:id="'calendarH' + ${habit.id} + 'M'  + ${mStat.index}"></div>
+    <div><a th:href="'/habit?habitId=' + ${habit.id}">Link</a></div>
 </div>
-
-<script src="/js/d3.v4.js"></script>
-<script src="/js/d3-scale-chromatic.v1.js"></script>
-<script src="/js/displayMonth.js"></script>
-
-<script th:inline="javascript">
-    let habits = [[${habits}]];
-    habits.forEach(function (hval, h) {
-        hval.months.forEach(function (mval, m) {
-            let select = "#calendarH" + hval.id + "M" + m;
-            drawMonth(select, mval.firstDay, mval.completions);
-        });
-    });
-</script>
 
 </body>
 </html>
