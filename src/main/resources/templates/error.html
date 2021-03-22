@@ -1,0 +1,20 @@
+<!--suppress ThymeleafVariablesResolveInspection -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${status + ' ' + error}"></title>
+</head>
+<body>
+
+<h1 th:text="${status + ' ' + error}"></h1>
+
+<h3 th:if="${exception}" th:text="${exception}"></h3>
+
+<!--<pre th:if="${trace}"  th:text="${trace}"></pre>-->
+
+<p>
+    <span th:text="${timestamp}"></span><br>
+<!--    Path <span th:text="${path}"></span>-->
+</p>
+
+</body>
+</html>
