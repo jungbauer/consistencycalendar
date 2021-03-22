@@ -27,7 +27,3 @@ dependencies {
     testImplementation group: 'org.spockframework', name: 'spock-core', version: '1.2-groovy-2.4'
     testImplementation group: 'org.spockframework', name: 'spock-spring', version: '1.2-groovy-2.4'
 }
-
-test {
-    useJUnitPlatform()
-}
