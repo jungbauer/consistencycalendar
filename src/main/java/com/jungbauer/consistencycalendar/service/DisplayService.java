@@ -45,7 +45,6 @@ public class DisplayService {
                 // if doesn't contain month add directly
                 if (pos == -1) {
                     Month newMonth = new Month(completion);
-                    newMonth.completions.add(completion);
                     months.add(newMonth);
                 }
                 else {
