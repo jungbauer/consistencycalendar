@@ -17,7 +17,6 @@ public class TestDisplay {
         // if months list empty add from first checkin
         if (months.isEmpty()) {
             Month newMonth = new Month(checkin);
-            newMonth.completions.add(checkin);
             months.add(newMonth);
         }
         else {
@@ -25,7 +24,6 @@ public class TestDisplay {
             // if doesn't contain month add directly
             if (pos == -1) {
                 Month newMonth = new Month(checkin);
-                newMonth.completions.add(checkin);
                 months.add(newMonth);
             }
             else {
