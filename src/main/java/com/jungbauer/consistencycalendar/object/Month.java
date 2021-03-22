@@ -6,15 +6,15 @@ import java.util.List;
 
 public class Month {
     public LocalDate firstDay;
-    public List<LocalDate> checkins;
+    public List<LocalDate> completions;
 
     public Month() {
-        checkins = new ArrayList<>();
+        completions = new ArrayList<>();
     }
 
     public Month(LocalDate date) {
-        checkins = new ArrayList<>();
-        checkins.add(date);
+        completions = new ArrayList<>();
+        completions.add(date);
         firstDay = LocalDate.of(date.getYear(), date.getMonth(), 1);
     }
 
@@ -26,7 +26,7 @@ public class Month {
     public String toString() {
         return "Month{" +
                 "firstDay=" + firstDay +
-                ", checkins=" + checkins +
+                ", completions=" + completions +
                 '}';
     }
 }

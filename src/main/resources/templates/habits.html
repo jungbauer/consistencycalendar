@@ -28,7 +28,7 @@
     habits.forEach(function (hval, h) {
         hval.months.forEach(function (mval, m) {
             let select = "#calendarH" + hval.id + "M" + m;
-            drawMonth(select, mval.firstDay, mval.checkins);
+            drawMonth(select, mval.firstDay, mval.completions);
         });
     });
 </script>
