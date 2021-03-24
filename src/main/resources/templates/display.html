@@ -9,52 +9,57 @@
     <link href="/css/display.css" rel="stylesheet">
 </head>
 <body>
-<div th:text="${test.type}"> test type</div>
-<div th:text="${test.title}"> test title</div>
-<div th:text="${test.note}"> test note</div>
 
-<div id="calendar1"></div>
-<div id="calendar2"></div>
-<div id="calendar3"></div>
+<div layout:fragment="content">
+    <div th:text="${test.type}"> test type</div>
+    <div th:text="${test.title}"> test title</div>
+    <div th:text="${test.note}"> test note</div>
 
-<hr>
-<div id="calendar4"></div>
+    <div id="calendar1"></div>
+    <div id="calendar2"></div>
+    <div id="calendar3"></div>
 
-<hr>
-<div th:each="month, iStat : ${display.months}" th:id="'calendarT' + ${iStat.index}">
+    <hr>
+    <div id="calendar4"></div>
+
+    <hr>
+    <div th:each="month, iStat : ${display.months}" th:id="'calendarT' + ${iStat.index}">
+    </div>
 </div>
 
-<script src="/js/d3.v4.js"></script>
-<script src="/js/d3-scale-chromatic.v1.js"></script>
-<script src="/js/displayMonth.js"></script>
-<script>
-    let item = {
-        startDate : "2021-02-01T00:00:00.000Z",
-        endDate : "2021-04-30T00:00:00.000Z",
-        months : [
-            {month: "2021-02-01T00:00:00.000Z", checkins: ["2021-02-02"]},
-            {month: "2021-03-01T00:00:00.000Z", checkins: ["2021-03-05"]},
-            {month: "2021-04-01T00:00:00.000Z", checkins: ["2021-04-05"]}]
-    };
+<th:block layout:fragment="optional">
+    <script src="/js/d3.v4.js"></script>
+    <script src="/js/d3-scale-chromatic.v1.js"></script>
+    <script src="/js/displayMonth.js"></script>
+    <script>
+        let item = {
+            startDate : "2021-02-01T00:00:00.000Z",
+            endDate : "2021-04-30T00:00:00.000Z",
+            months : [
+                {month: "2021-02-01T00:00:00.000Z", checkins: ["2021-02-02"]},
+                {month: "2021-03-01T00:00:00.000Z", checkins: ["2021-03-05"]},
+                {month: "2021-04-01T00:00:00.000Z", checkins: ["2021-04-05"]}]
+        };
 
-    drawMonth("#calendar1", item.months[0].month, item.months[0].checkins);
-    drawMonth("#calendar2", item.months[1].month, item.months[1].checkins);
-    drawMonth("#calendar3", item.months[2].month, item.months[2].checkins);
-</script>
+        drawMonth("#calendar1", item.months[0].month, item.months[0].checkins);
+        drawMonth("#calendar2", item.months[1].month, item.months[1].checkins);
+        drawMonth("#calendar3", item.months[2].month, item.months[2].checkins);
+    </script>
 
-<script th:inline="javascript">
-    let display = [[${display}]];
-    console.log('display', display);
-    drawMonth("#calendar4", display.months[0].firstDay, display.months[0].checkins);
-</script>
+    <script th:inline="javascript">
+        let display = [[${display}]];
+        console.log('display', display);
+        drawMonth("#calendar4", display.months[0].firstDay, display.months[0].completions);
+    </script>
 
-<script th:inline="javascript">
-    let display2 = [[${display}]];
-    display2.months.forEach(function (value, i) {
-        let id = "#calendarT" + i;
-        drawMonth(id, value.firstDay, value.checkins);
-    });
-</script>
+    <script th:inline="javascript">
+        let display2 = [[${display}]];
+        display2.months.forEach(function (value, i) {
+            let id = "#calendarT" + i;
+            drawMonth(id, value.firstDay, value.completions);
+        });
+    </script>
+</th:block>
 
 </body>
 </html>
