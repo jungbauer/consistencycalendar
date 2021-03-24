@@ -1,14 +1,22 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.thymeleaf.org">
-<div>
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Habit</title>
+</head>
+<body>
+
+<div layout:fragment="content">
     <div th:text="${habit.title}">title</div>
     <div th:text="'Starting ' + ${habit.startDate} + ' -- ending ' + ${habit.endDate}">period</div>
     <div th:text="${habit.note}">main note</div>
 
     <div th:each="month, mStat : ${habit.months}"
          th:id="'calendarH' + ${habit.id} + 'M'  + ${mStat.index}"></div>
+</div>
 
+<th:block layout:fragment="optional">
     <script src="/js/d3.v4.js"></script>
     <script src="/js/d3-scale-chromatic.v1.js"></script>
     <script src="/js/displayMonth.js"></script>
@@ -20,4 +28,7 @@
             drawMonth(select, mval.firstDay, mval.completions);
         });
     </script>
-</div>
+</th:block>
+
+</body>
+</html>
