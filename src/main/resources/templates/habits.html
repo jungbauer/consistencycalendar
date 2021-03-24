@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en"
-      layout:decorate="~{layout}"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
 <head>
-    <meta charset="UTF-8">
     <title>Habits</title>
 </head>
 <body>
-<h1>Habit display</h1>
 
-<div th:each="habit, iStat : ${habits}">
-    <div th:text="${habit.title}">title</div>
-    <div><a th:href="'/habit?habitId=' + ${habit.id}">Link</a></div>
+<div layout:fragment="content">
+    <h1>Habit display</h1>
+    <div th:each="habit, iStat : ${habits}">
+        <div th:text="${habit.title}">title</div>
+        <div><a th:href="'/habit?habitId=' + ${habit.id}">Link</a></div>
+    </div>
 </div>
 
 </body>
