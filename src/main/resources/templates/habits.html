@@ -52,9 +52,8 @@
 <th:block layout:fragment="optional">
     <script th:inline="javascript">
         function todayCompletion(habitId) {
-            console.log('function clicked. ID = ', habitId);
             $.get("/api/todaycomp?habitId=" + habitId).done(function(date) {
-                console.log('stuff', date);
+                $("#recentComp" + habitId).replaceWith("<td id='recentComp" + habitId + "'>" + date + "</td>");
                 $('#addModalH' + habitId).modal('hide');
             });
         }
