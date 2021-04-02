@@ -12,6 +12,7 @@ public class HabitDisplay {
     public LocalDate endDate;
     public String note;
     public List<Month> months;
+    public LocalDate mostRecentCompletion;
 
     public HabitDisplay() {
         months = new ArrayList<>();

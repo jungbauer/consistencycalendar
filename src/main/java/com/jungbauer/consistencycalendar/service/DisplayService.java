@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,6 +28,9 @@ public class DisplayService {
 
         List<LocalDate> completions = habit.getCompletions().stream().map(Completion::getDate).collect(Collectors.toList());
         hd.months.addAll(createMonths(completions));
+
+        Collections.sort(completions);
+        hd.mostRecentCompletion = completions.get(completions.size() - 1);
 
         return hd;
     }

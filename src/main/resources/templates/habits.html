@@ -19,6 +19,7 @@
         <tbody>
         <tr th:each="habit : ${habits}">
             <td th:text="${habit.title}">title</td>
+            <td th:id="'recentComp' + ${habit.id}" th:text="${habit.mostRecentCompletion}">most recent completion</td>
             <td><a th:href="'/habit?habitId=' + ${habit.id}">Link</a></td>
             <td><a data-toggle="modal" th:data-target="'#addModalH' + ${habit.id}"><i class="bi bi-plus-circle-fill"></i></a></td>
         </tr>
