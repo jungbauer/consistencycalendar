@@ -40,4 +40,8 @@ public class Completion {
     public void setDate(LocalDate date) {
         this.date = date;
     }
+
+    public void setHabit(Habit habit) {
+        this.habit = habit;
+    }
 }
