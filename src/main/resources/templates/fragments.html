@@ -11,7 +11,7 @@
     <tbody>
     <tr th:fragment="habitTemplate (habit)" th:id="'habitRow' + ${habit.id}">
         <td th:text="${habit.title}">title</td>
-        <td th:text="${habit.mostRecentCompletion}">most recent completion</td>
+        <td th:text="${habit.mostRecentCompletion}" class="recent-date">most recent completion</td>
         <td><a th:href="'/habit?habitId=' + ${habit.id}">Link</a></td>
         <td><a th:id="'logBtn' + ${habit.id}" data-toggle="modal" th:data-target="'#addModalH' + ${habit.id}" class="btn"><i class="bi bi-plus-circle-fill"></i></a></td>
     </tr>
