@@ -13,7 +13,10 @@
         <td th:text="${habit.title}">title</td>
         <td th:text="${habit.mostRecentCompletion}" class="recent-date">most recent completion</td>
         <td><a th:href="'/habit?habitId=' + ${habit.id}">Link</a></td>
-        <td><a th:id="'logBtn' + ${habit.id}" data-toggle="modal" th:data-target="'#addModalH' + ${habit.id}" class="btn"><i class="bi bi-plus-circle-fill"></i></a></td>
+        <td><a th:id="'logBtn' + ${habit.id}" data-toggle="modal" th:data-target="'#addModalH' + ${habit.id}"
+               th:class="${habit.recentTodayCheck()} ? 'btn disabled' : 'btn'">
+            <i class="bi bi-plus-circle-fill"></i></a>
+        </td>
     </tr>
     </tbody>
 </table>

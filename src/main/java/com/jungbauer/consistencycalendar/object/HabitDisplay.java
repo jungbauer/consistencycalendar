@@ -17,4 +17,9 @@ public class HabitDisplay {
     public HabitDisplay() {
         months = new ArrayList<>();
     }
+
+    public boolean recentTodayCheck() {
+        if (LocalDate.now().isEqual(mostRecentCompletion)) return true;
+        return LocalDate.now().isBefore(mostRecentCompletion);
+    }
 }
