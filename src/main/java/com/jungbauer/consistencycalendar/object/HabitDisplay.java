@@ -19,6 +19,7 @@ public class HabitDisplay {
     }
 
     public boolean recentTodayCheck() {
+        if (mostRecentCompletion == null) return false;
         if (LocalDate.now().isEqual(mostRecentCompletion)) return true;
         return LocalDate.now().isBefore(mostRecentCompletion);
     }

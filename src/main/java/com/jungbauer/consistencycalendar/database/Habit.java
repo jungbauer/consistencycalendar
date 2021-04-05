@@ -1,11 +1,15 @@
 package com.jungbauer.consistencycalendar.database;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +23,14 @@ public class Habit {
     private Integer id;
 
     private String type;
+
+    @NotNull @NotBlank
     private String title;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate startDate;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate endDate;
     private String note;
 

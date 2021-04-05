@@ -12,12 +12,17 @@ import com.jungbauer.consistencycalendar.service.DisplayService;
 import com.jungbauer.consistencycalendar.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -135,5 +140,27 @@ public class HomeController {
         else {
             return "error";
         }
+    }
+
+    @GetMapping("/new-habit")
+    public ModelAndView newHabit() {
+        Map<String, Object> model = new LinkedHashMap<>();
+        Habit habit = new Habit();
+        model.put("habit", habit);
+
+        return new ModelAndView("new-habit", model);
+    }
+
+    @PostMapping("/new-habit")
+    public String newHabit(@Valid Habit habit, BindingResult result, Model model) {
+        if (result.hasErrors()) { //todo: make this more informative at redirect
+            System.out.println("Got Errors: " + result.getErrorCount());
+            return "new-habit";
+        }
+
+        System.out.println("Title: " + habit.getTitle());
+
+        habitRepository.save(habit);
+        return "redirect:/";
     }
 }

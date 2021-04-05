@@ -16,6 +16,8 @@
 <div layout:fragment="content" class="container">
     <h1>Habit display</h1>
 
+    <button type="button" class="btn btn-primary" th:href="'/new-habit'">New Habit</button>
+
     <table class="table table-bordered table-hover">
         <tbody>
         <tr th:each="habit : ${habits}" th:include="fragments :: habitTemplate (${habit})" th:id="'habitRow' + ${habit.id}"></tr>

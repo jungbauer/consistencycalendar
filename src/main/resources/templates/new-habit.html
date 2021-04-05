@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>New Habit</title>
+</head>
+<body>
+
+<div layout:fragment="content" class="container">
+    <form action="#" th:action="@{/new-habit}" method="post" th:object="${habit}">
+        <label>Title:</label>
+        <input type="text" th:field="*{title}" /><br/>
+
+        <label>Type:</label>
+        <input type="text" th:field="*{type}" /><br/>
+
+        <label>Start Date (yyyy-mm-dd):</label>
+        <input type="date" th:value="*{startDate}" th:field="*{startDate}" /><br/>
+
+        <label>End Date (yyyy-mm-dd):</label>
+        <input type="date" th:value="*{endDate}" th:field="*{endDate}" /><br/>
+
+        <label>Note:</label>
+        <textarea rows="5" cols="25" th:field="*{note}"></textarea>
+        <br/>
+
+        <button type="submit">Add Habit</button>
+    </form>
+</div>
+
+</body>
+</html>

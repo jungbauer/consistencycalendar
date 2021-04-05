@@ -29,8 +29,10 @@ public class DisplayService {
         List<LocalDate> completions = habit.getCompletions().stream().map(Completion::getDate).collect(Collectors.toList());
         hd.months.addAll(createMonths(completions));
 
-        Collections.sort(completions);
-        hd.mostRecentCompletion = completions.get(completions.size() - 1);
+        if (completions.size() > 0) {
+            Collections.sort(completions);
+            hd.mostRecentCompletion = completions.get(completions.size() - 1);
+        }
 
         return hd;
     }
