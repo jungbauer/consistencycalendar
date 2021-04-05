@@ -1,5 +1,7 @@
 package com.jungbauer.consistencycalendar;
 
+import com.jungbauer.consistencycalendar.database.Completion;
+import com.jungbauer.consistencycalendar.database.CompletionRepository;
 import com.jungbauer.consistencycalendar.database.Habit;
 import com.jungbauer.consistencycalendar.database.HabitRepository;
 import com.jungbauer.consistencycalendar.database.User;
@@ -10,9 +12,11 @@ import com.jungbauer.consistencycalendar.service.DisplayService;
 import com.jungbauer.consistencycalendar.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -27,15 +31,17 @@ public class HomeController {
     private final UserRepository userRepository;
     private final HabitRepository habitRepository;
     private final DisplayService displayService;
+    private final CompletionRepository completionRepository;
 
     @Autowired
     public HomeController(TestService testService, UserRepository userRepository,
-                          HabitRepository habitRepository, DisplayService displayService) {
+                          HabitRepository habitRepository, DisplayService displayService, CompletionRepository completionRepository) {
 
         this.testService = testService;
         this.userRepository = userRepository;
         this.habitRepository = habitRepository;
         this.displayService = displayService;
+        this.completionRepository = completionRepository;
     }
 
     @GetMapping("/")
@@ -98,6 +104,36 @@ public class HomeController {
             errMap.put("status", "404");
             errMap.put("error", "ERROR: Can't find what you're looking for.");
             return new ModelAndView("error", errMap);
+        }
+    }
+
+    @GetMapping(value="/todaycomp")
+    public String todayCompletion(ModelMap map, Integer habitId) {
+        Optional<Habit> habit = habitRepository.findById(habitId);
+
+        if (habit.isPresent()) {
+            LocalDate now = LocalDate.now();
+            String returnDate = now.toString();
+
+            if (!completionRepository.existsByHabitAndDate(habit.get(), now)) {
+                Completion compToday = new Completion();
+                compToday.setDate(now);
+                compToday.setHabit(habit.get());
+                completionRepository.save(compToday);
+            }
+
+            Optional<Habit> newHabit = habitRepository.findById(habitId);
+            HabitDisplay hd;
+
+            if (newHabit.isPresent()) {
+                hd = displayService.createHabitDisplay(newHabit.get());
+                map.addAttribute("habit", hd);
+                return "fragments :: habitTemplate";
+            }
+            else return "error";
+        }
+        else {
+            return "error";
         }
     }
 }
