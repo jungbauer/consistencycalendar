@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<div layout:fragment="content">
+<div layout:fragment="content" class="container">
     <div th:text="${habit.title}">title</div>
     <div th:text="'Starting ' + ${habit.startDate} + ' -- ending ' + ${habit.endDate}">period</div>
     <div th:text="${habit.note}">main note</div>
