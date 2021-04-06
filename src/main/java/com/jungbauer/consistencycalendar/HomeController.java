@@ -146,6 +146,7 @@ public class HomeController {
     public ModelAndView newHabit() {
         Map<String, Object> model = new LinkedHashMap<>();
         Habit habit = new Habit();
+        habit.setType("default");
         model.put("habit", habit);
 
         return new ModelAndView("new-habit", model);

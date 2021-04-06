@@ -13,8 +13,8 @@
         <label>Title:</label>
         <input type="text" th:field="*{title}" required /><br/>
 
-        <label>Type:</label>
-        <input type="text" th:field="*{type}" /><br/>
+        <label for="type">Type:</label>
+        <input type="text" id="type" th:field="*{type}"><br>
 
         <label>Start Date:</label>
         <input type="date" th:value="*{startDate}" th:field="*{startDate}" required /><br/>
