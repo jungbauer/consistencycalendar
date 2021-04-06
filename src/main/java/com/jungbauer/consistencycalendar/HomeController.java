@@ -161,6 +161,6 @@ public class HomeController {
         System.out.println("Title: " + habit.getTitle());
 
         habitRepository.save(habit);
-        return "redirect:/";
+        return "redirect:/habits";
     }
 }
