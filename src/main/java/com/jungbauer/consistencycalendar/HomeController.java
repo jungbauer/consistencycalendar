@@ -164,4 +164,21 @@ public class HomeController {
         habitRepository.save(habit);
         return "redirect:/habits";
     }
+
+    @GetMapping("/edit-habit")
+    public ModelAndView editHabit(Integer habitId) {
+        Map<String, Object> model = new LinkedHashMap<>();
+        Optional<Habit> habit = habitRepository.findById(habitId);
+
+        if (habit.isPresent()) {
+            model.put("habit", habit.get());
+            return new ModelAndView("habit-edit", model);
+        }
+        else {
+            Map<String,String> errMap = new HashMap<>();
+            errMap.put("status", "404");
+            errMap.put("error", "ERROR: Can't find what you're looking for.");
+            return new ModelAndView("error", errMap);
+        }
+    }
 }
