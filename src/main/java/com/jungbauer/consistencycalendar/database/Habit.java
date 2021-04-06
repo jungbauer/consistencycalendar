@@ -37,6 +37,9 @@ public class Habit {
     @OneToMany(mappedBy = "habit")
     private List<Completion> completions = new ArrayList<>();
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate createdDate;
+
     public Habit() {}
 
     public Integer getId() {
@@ -65,6 +68,10 @@ public class Habit {
 
     public List<Completion> getCompletions() {
         return completions;
+    }
+
+    public LocalDate getCreatedDate() {
+        return createdDate;
     }
 
     public void setType(String type) {

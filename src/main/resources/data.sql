@@ -3,10 +3,10 @@ INSERT  INTO users (name, age, active, birth_date) VALUES
 ('George', 36, false, '1985-02-15');
 
 INSERT INTO habit (type, title, start_date, end_date, note) VALUES
- ('YesNoHabit', 'TEST HABIT: Push-ups', '2021-02-01', '2021-04-30', 'Push myself off the ground.');
+ ('YesNoHabit', 'TEST HABIT: Push-ups', '2021-02-01', '2021-04-30', 'Push myself off the ground.', '2021-01-30');
 
 INSERT INTO habit (type, title, start_date, end_date, note) VALUES
-('YesNoHabit', 'Second test habit', '2021-03-01', '2021-06-30', 'dump completions');
+('YesNoHabit', 'Second test habit', '2021-03-01', '2021-06-30', 'dump completions', '2021-01-30');
 
 INSERT INTO completions (date, habit_id) VALUES ('2021-02-04', 1);
 INSERT INTO completions (date, habit_id) VALUES ('2021-02-05', 1);

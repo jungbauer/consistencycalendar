@@ -15,7 +15,8 @@ CREATE TABLE habit
     title   TEXT,
     start_date  DATE,
     end_date    DATE,
-    note    TEXT
+    note    TEXT,
+    created_date    DATE
 );
 
 CREATE TABLE completions
