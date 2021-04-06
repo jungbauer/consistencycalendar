@@ -101,4 +101,8 @@ public class Habit {
     public void setCompletions(List<Completion> completions) {
         this.completions = completions;
     }
+
+    public void setCreatedDate(LocalDate createdDate) {
+        this.createdDate = createdDate;
+    }
 }

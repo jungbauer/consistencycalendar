@@ -158,7 +158,7 @@ public class HomeController {
             return "new-habit";
         }
 
-        System.out.println("Title: " + habit.getTitle());
+        habit.setCreatedDate(LocalDate.now());
 
         habitRepository.save(habit);
         return "redirect:/habits";
