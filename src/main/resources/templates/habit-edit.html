@@ -12,5 +12,12 @@
     <div th:text="${habit.title}">title</div>
 </div>
 
+<th:block layout:fragment="optional">
+    <script th:inline="javascript">
+        let habit = [[${habit}]];
+        console.log('habit', habit);
+    </script>
+</th:block>
+
 </body>
 </html>
