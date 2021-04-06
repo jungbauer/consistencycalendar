@@ -63,6 +63,14 @@ function drawCompletions(selector, startDate, endDate, completions) {
         .on("mouseout", function(d) {
             d3.select(this).classed('hover', false);
         })
+        .on("click", function(d){
+            if(d3.select(this).classed('selected')){
+                d3.select(this).classed('selected', false);
+            } else {
+                d3.select(this).classed('selected', true)
+            }
+            // doSomething();
+        })
         .datum(format);
 
     // creates a title to show when hovering over a day.
@@ -76,7 +84,8 @@ function drawCompletions(selector, startDate, endDate, completions) {
 
     // fills in a colour for a rect if there are associated counts.
     rect.filter(function(d) { return d in lookup; })
-        .style("fill", '#111111')
+        .style("fill", '#9b9b9b')
+        .classed("original", true)
         .select("title")
         .text(function(d) { return titleFormat(new Date(d)); });
 }

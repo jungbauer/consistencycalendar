@@ -21,17 +21,19 @@
             stroke: #6d6E70;
             stroke-width: 2;
         }
-        .day.focus {
-            stroke: #ffff33;
+        .day.selected {
+            stroke: #2755ff;
             stroke-width: 2;
         }
     </style>
+    <script src="/webjars/jquery/3.6.0/jquery.js"></script>
 </head>
 <body>
 
 <div layout:fragment="content" class="container">
     <div th:text="${habit.title}">title</div>
     <div id="completions"></div>
+    <button class="btn btn-warning" onclick="dataDump()">test</button>
 </div>
 
 <th:block layout:fragment="optional">
@@ -42,6 +44,16 @@
         let habit = [[${habit}]];
         console.log('habit', habit);
         drawCompletions('#completions', habit.startDate, habit.endDate, habit.completions)
+    </script>
+
+    <script>
+        function dataDump() {
+            let originals = d3.selectAll('#completions rect.original').data();
+            console.log('originals', originals);
+
+            let selected = d3.selectAll('#completions rect.selected').data();
+            console.log('selected', selected);
+        }
     </script>
 </th:block>
 
