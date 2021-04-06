@@ -11,16 +11,16 @@
 <div layout:fragment="content" class="container">
     <form action="#" th:action="@{/new-habit}" method="post" th:object="${habit}">
         <label>Title:</label>
-        <input type="text" th:field="*{title}" /><br/>
+        <input type="text" th:field="*{title}" required /><br/>
 
         <label>Type:</label>
         <input type="text" th:field="*{type}" /><br/>
 
-        <label>Start Date (yyyy-mm-dd):</label>
-        <input type="date" th:value="*{startDate}" th:field="*{startDate}" /><br/>
+        <label>Start Date:</label>
+        <input type="date" th:value="*{startDate}" th:field="*{startDate}" required /><br/>
 
-        <label>End Date (yyyy-mm-dd):</label>
-        <input type="date" th:value="*{endDate}" th:field="*{endDate}" /><br/>
+        <label>End Date:</label>
+        <input type="date" th:value="*{endDate}" th:field="*{endDate}" required /><br/>
 
         <label>Note:</label>
         <textarea rows="5" cols="25" th:field="*{note}"></textarea>
