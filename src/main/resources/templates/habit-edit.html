@@ -5,17 +5,43 @@
       layout:decorate="~{layout}">
 <head>
     <title>Edit Habit</title>
+    <style>
+        #completions {
+            margin: 20px;
+        }
+        .month {
+            margin-right: 8px;
+        }
+        .month-name {
+            font-size: 85%;
+            fill: #777;
+            font-family: Arial, Helvetica,serif;
+        }
+        .day.hover {
+            stroke: #6d6E70;
+            stroke-width: 2;
+        }
+        .day.focus {
+            stroke: #ffff33;
+            stroke-width: 2;
+        }
+    </style>
 </head>
 <body>
 
 <div layout:fragment="content" class="container">
     <div th:text="${habit.title}">title</div>
+    <div id="completions"></div>
 </div>
 
 <th:block layout:fragment="optional">
+    <script src="/js/d3.v4.js"></script>
+    <script src="/js/displayCompletions.js"></script>
+
     <script th:inline="javascript">
         let habit = [[${habit}]];
         console.log('habit', habit);
+        drawCompletions('#completions', habit.startDate, habit.endDate, habit.completions)
     </script>
 </th:block>
 
